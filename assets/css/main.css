@@ -3,4 +3,8 @@
 
 @theme default{
   /* --color-primary: #006600; */
+  --color-light-bg-code: var(--color-gray-100);
+  --color-light-bg-inline-code: var(--color-gray-100);
+  --color-light-fg-inline-code: var(--color-black);
+  --color-light-link: var(--color-blue-500)
 }
