@@ -1,5 +1,7 @@
 <template>
+  <site-nav class="mt-3 mx-6 text-gray-400 hover:text-default"/>
   <div class="article-page">
+    
     <header>
       <h1 v-if="article">{{ article.title }}</h1>
       <USeparator class="py-3"/>
@@ -8,6 +10,7 @@
     <main v-if="article">
       <ContentRenderer :value="article" class="article"/>
       <USeparator icon="Logo" class="py-3" />
+      <Copyright/>
     </main>
 
     <div v-else class="not-found">
@@ -33,12 +36,12 @@ const { data: article } = await useAsyncData(`article-${route.params.id}`, () =>
   @apply max-w-3xl mx-auto my-30
 }
 
-.article h1{
- @apply hidden;
+h1 {
+  @apply text-3xl font-extrabold mt-5;
 }
 
-h1 {
-  @apply text-3xl font-extrabold;
+.article p {
+  @apply mt-3 text-justify;
 }
 
 .article h2 {
@@ -78,27 +81,35 @@ h1 {
   @apply text-sm leading-4 bg-light-bg-code px-3 py-5 rounded-sm mt-3;
 }
 
-.article a:not([href*="#"]) {
+.article :not(h1, h2, h3, h4, h5, h6) > a {
   @apply text-light-link;
 }
 
 .article table{
-  @apply border-t-2 border-b-2;
+  @apply border-t-2 border-b-2 my-1.5 leading-10;
 }
 
 .article table thead{
   @apply border-b-1;
 }
 
-.article table th{
-  @apply mx-2
+.article table th, td{
+  @apply px-4
 }
 
 .article blockquote {
-  @apply bg-gray-50 py-3 pl-1.5 border-l-6 border-l-gray-300;
+  @apply bg-gray-50 py-3 pl-1.5 border-l-6 border-l-gray-300 mt-3;
+}
+
+.article blockquote p {
+  @apply m-0;
 }
 
 .article hr {
   @apply text-gray-500 my-2;
+}
+
+.article section[class*="footnotes"]{
+  @apply text-sm mt-8 text-gray-400;
 }
 </style>

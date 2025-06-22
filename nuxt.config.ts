@@ -4,13 +4,20 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   css: ['~/assets/css/main.css'],
   // 禁用 NuxtUI 的字体配置，抑制字体无法下载错误
-  ui:{
+  ui: {
     fonts: false
   },
-  app:{
-    head:{
-      title:"α",
-      titleTemplate:"%s | Méng"
+  app: {
+    head: {
+      title: "α",
+      titleTemplate: "%s | Méng"
+    }
+  },
+  content: {
+    build: {
+      markdown: {
+        highlight: false
+      }
     }
   },
   modules: [

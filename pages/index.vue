@@ -23,35 +23,22 @@
       <p>C，C++，Java，Python，Rust，C# 以及 Web 编程均有过接触</p>
       <p>目前正在学习网络安全知识</p>
       <p>如果需要联系我，可以给我发送一封<a href="mailto:ttdlyu@163.com" class="fat-link" >邮件</a></p>
-      <p>网站目前有页面：<template v-for="(link, index) in links" :key="link">
-          <a :href="link.link" class="fat-link">{{ link.title }}</a><span v-if="index < links.length - 1">|</span>
+      <p>网站目前有页面：
+        <template v-for="(link, index) in appConfig.sitePage" :key="link">
+          <NuxtLink :to="link.link" class="fat-link">{{ link.title }}</NuxtLink>
+          <span v-if="index < appConfig.sitePage.length - 1">|</span>
         </template>
       </p>
 
     </div>
     <!-- bottom -->
     <USeparator icon="Logo" class="py-3" />
-    <div class="text-gray-300 text-sm">
-      <p> Copyright © 2023-2025 ttdly. All rights reserved.
-        <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="thin-link">CC BY-NC-SA 4.0</a>
-      </p>
-      <p>Powered by<a href="https://nuxt.com" target="_blank" class="thin-link">NUXTJS</a>
-      </p>
-    </div>
+    <Copyright/>
   </div>
 </template>
 
 <script lang="ts" setup>
-const links = [
-  {
-    title: "关于",
-    link: "/about"
-  },
-  {
-    title: "Blog",
-    link: "/blog"
-  }
-]
+const appConfig = useAppConfig();
 
 </script>
 
@@ -60,15 +47,6 @@ p {
   display: flex;
   align-items: center;
   gap: 1px;
-}
-
-.thin-link{
-  text-decoration: underline;
-  transition: color .2s;
-}
-
-.thin-link:hover{
-  color: var(--text-color-default);
 }
 
 .fat-link {
