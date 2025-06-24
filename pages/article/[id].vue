@@ -1,5 +1,5 @@
 <template>
-  <site-nav class="mt-3 mx-6 text-gray-400 hover:text-default"/>
+  <site-nav/>
   <div class="article-page">
     
     <header>

@@ -1,10 +1,16 @@
-import { defineContentConfig, defineCollection } from '@nuxt/content'
+import { defineContentConfig, defineCollection, z } from '@nuxt/content'
 
 export default defineContentConfig({
   collections: {
     articles: defineCollection({
       type: 'page',
-      source: 'article/*.md'
+      source: 'article/*.md',
+      schema: z.object({
+        create_at: z.date(),
+        update_at: z.date(),
+        labels: z.array(z.string()),
+        locked: z.boolean(),
+      })
     }),
     notes: defineCollection({
       type: 'page',
