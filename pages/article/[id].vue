@@ -1,40 +1,38 @@
 <template>
-  <site-nav/>
-  <div class="article-page">
-    
+  <NuxtLayout v-if="article">
     <header>
-      <h1 v-if="article">{{ article.title }}</h1>
+      <h1>{{ article.title }}</h1>
       <USeparator class="py-3"/>
     </header>
- 
-    <main v-if="article">
+    <main>
       <ContentRenderer :value="article" class="article"/>
-      <USeparator icon="Logo" class="py-3" />
-      <Copyright/>
     </main>
-
-    <div v-else class="not-found">
-      <h2>文章未找到</h2>
-      <p>请检查链接是否正确</p>
-    </div>
-  </div>
+  </NuxtLayout>
 </template>
 
 <script lang="ts" setup>
-import { useRoute } from 'vue-router'
-const route = useRoute()
+import {useRoute} from 'vue-router'
 
+const route = useRoute()
+const router = useRouter()
 const { data: article } = await useAsyncData(`article-${route.params.id}`, () => {
   return queryCollection('articles').path(route.path).first()
+})
+
+if (!article.value) {
+  router.replace("/blog")
+}
+
+useHead({
+  title: article.value?.title
+})
+definePageMeta({
+  layout: "common"
 })
 </script>
 
 <style>
 @reference "../../assets/css/main.css";
-
-.article-page {
-  @apply max-w-3xl mx-auto my-30
-}
 
 h1 {
   @apply text-3xl font-extrabold mt-5;
@@ -53,8 +51,7 @@ h1 {
 }
 
 .article p code {
-  @apply text-sm px-1 py-0.5 rounded-sm 
-  bg-light-bg-inline-code;
+  @apply text-sm px-1 py-0.5 rounded-sm text-gray-100;
 }
 
 .article ul {
@@ -78,7 +75,7 @@ h1 {
 }
 
 .article pre[class*="language-"]{
-  @apply text-sm leading-4 bg-light-bg-code px-3 py-5 rounded-sm mt-3;
+  @apply text-sm leading-4 bg-gray-100 px-3 py-5 rounded-sm mt-3 dark:bg-gray-700;
 }
 
 .article :not(h1, h2, h3, h4, h5, h6) > a {
@@ -98,7 +95,8 @@ h1 {
 }
 
 .article blockquote {
-  @apply bg-gray-50 py-3 pl-1.5 border-l-6 border-l-gray-300 mt-3;
+  @apply bg-gray-50 py-3 pl-1.5 border-l-6 border-l-gray-300 mt-3
+  dark:bg-gray-700 dark:border-l-gray-600;
 }
 
 .article blockquote p {
@@ -111,5 +109,9 @@ h1 {
 
 .article section[class*="footnotes"]{
   @apply text-sm mt-8 text-gray-400;
+}
+
+.article img {
+  @apply dark:bg-gray-200 dark:p-5 dark:rounded-sm
 }
 </style>
