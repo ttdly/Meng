@@ -3,8 +3,6 @@
     <p> Copyright © 2023-2025 ttdly. All rights reserved.
       <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="thin-link">CC BY-NC-SA 4.0</a>
     </p>
-    <p>Powered by<a href="https://nuxt.com" target="_blank" class="thin-link">NUXTJS</a>
-    </p>
   </div>
 </template>
 

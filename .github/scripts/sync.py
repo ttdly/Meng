@@ -1,7 +1,6 @@
 import json
 import os
 
-
 def handle_raw_json(path):
     with open(path, 'r') as f:
         data = json.load(f)
@@ -15,7 +14,7 @@ def handle_raw_json(path):
         "labels": discussion["labels"],
     }
     if discussion["updated_at"] is not None:
-        _discussion_meta["updated_at"] = discussion["updated_at"]
+        _discussion_meta["update_at"] = discussion["updated_at"]
     _action_meta = {
         "number": discussion["number"],
         "action": data["action"],
@@ -25,7 +24,7 @@ def handle_raw_json(path):
 
 
 def create_front_matter(data):
-    content = "--------"
+    content = "---"
     for k, v in data.items():
         if type(v) == bool:
             if v:
@@ -41,7 +40,7 @@ def create_front_matter(data):
             else:
                 for label in v:
                     content += f"\n  - {label['name']}"
-    content += "\n--------"
+    content += "\n---"
     return content
 
 

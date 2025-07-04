@@ -7,7 +7,7 @@
     <div v-for="(article, index) in articles" :key="index" class="pb-5">
       <NuxtLink :to="article.path" class="text-xl hover:underline">{{ article.title }}</NuxtLink>
       <div v-if="article.labels.length > 0" class="text-sm text-gray-400">
-        <template v-for="label in article.labels">
+        <template v-for="label in article.labels" :key="label">
           <span class="hover:underline hover:text-default">#{{ label }}</span>
         </template>
       </div>
@@ -20,7 +20,12 @@
 </template>
 
 <script lang="ts" setup>
-const { data: articles } = await useAsyncData('blog', () => queryCollection('articles').all());
+const {data: articles} = await useAsyncData('blog',
+    () => queryCollection('articles')
+        .where("locked", "=", false)
+        .order("create_at", "DESC")
+        .all()
+);
 useHead({
   title: "BóKè"
 })

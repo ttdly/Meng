@@ -37,11 +37,22 @@
     <!-- bottom -->
     <USeparator class="py-3" icon="Logo"/>
     <Copyright/>
+    <div class="text-gray-300 h-5 overflow-hidden hover:h-30 transition-all">
+      build info
+      <div>build time {{ runtime.public.build.time.split("T")[0] }}.</div>
+      <div>build version {{ runtime.public.build.commit }}.</div>
+      <div>nuxt version {{ runtime.public.build.version.replace("^", "") }}.</div>
+    </div>
   </div>
 </template>
 
 <script lang="ts" setup>
 const appConfig = useAppConfig();
+const runtime = useRuntimeConfig();
+
+useHead({
+  title: "å"
+})
 
 </script>
 

@@ -51,7 +51,7 @@ h1 {
 }
 
 .article p code {
-  @apply text-sm px-1 py-0.5 rounded-sm text-gray-100;
+  @apply text-sm px-1 py-0.5 rounded-sm text-default bg-gray-100 dark:bg-gray-700;
 }
 
 .article ul {
@@ -79,7 +79,7 @@ h1 {
 }
 
 .article :not(h1, h2, h3, h4, h5, h6) > a {
-  @apply text-light-link;
+  @apply text-primary;
 }
 
 .article table{

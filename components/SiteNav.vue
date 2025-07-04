@@ -1,6 +1,7 @@
 <template>
-  <div class="flex flex-row gap-4 items-center justify-between 
-  mt-3 mx-6 text-gray-400 hover:text-default">
+  <div
+      class="flex flex-row gap-4 items-center justify-between
+    mt-3 mx-6 text-gray-400 hover:text-default">
     <div>
       <UIcon name="Logo" class="size-6" />
     </div>

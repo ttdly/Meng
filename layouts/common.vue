@@ -1,20 +1,24 @@
 <template>
-  <site-nav/>
-  <div class="max-w-3xl m-auto mt-30 cursor-default">
-    <slot/>
-  </div>
-  <div id="foot" class="mb-20 mt-8">
-    <USeparator class="py-3" icon="Logo"/>
-    <Copyright class="max-w-3xl m-auto"/>
-    <USeparator class="pt-3 pb-1"/>
-    <div class="flex justify-center text-sm text-gray-200">
-      build time {{ runtime.public.build.time.split("T")[0] }}.
-      build version {{ runtime.public.build.commit }}.
-      nuxt version {{ runtime.public.build.version.replace("^", "") }}
+  <div>
+    <site-nav/>
+    <div class="max-w-3xl m-auto mt-30 cursor-default">
+      <slot/>
+    </div>
+    <div id="foot" class="mb-4 mt-6">
+      <USeparator class="py-3" icon="Logo"/>
+      <div class=" max-w-3xl mx-auto flex justify-between items-center">
+        <div class="text-sm">
+          © 2023-2025 ttdly.
+          <a class="underline" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>
+        </div>
+        <a href="#" target="_blank">
+          <UIcon class="text-2xl" name="i-streamline-logos:github-logo-2-block"/>
+        </a>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup>
-const runtime = useRuntimeConfig()
+
 </script>
