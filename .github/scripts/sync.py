@@ -36,7 +36,7 @@ def create_front_matter(data):
         else:
             content += f"\n{k}:"
             if len(v) == 0:
-                content += "[]"
+                content += " []"
             else:
                 for label in v:
                     content += f"\n  - {label['name']}"

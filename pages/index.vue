@@ -49,6 +49,8 @@
 <script lang="ts" setup>
 const appConfig = useAppConfig();
 const runtime = useRuntimeConfig();
+const route = useRouter()
+route.replace("/blog")
 
 useHead({
   title: "å"

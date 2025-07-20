@@ -1,24 +1,28 @@
-import { defineContentConfig, defineCollection, z } from '@nuxt/content'
+import {defineCollection, defineContentConfig, z} from '@nuxt/content'
+
+const commonSchema = z.object({
+    create_at: z.date(),
+    update_at: z.date(),
+    labels: z.array(z.string()),
+    locked: z.boolean(),
+});
 
 export default defineContentConfig({
   collections: {
     articles: defineCollection({
       type: 'page',
       source: 'article/*.md',
-      schema: z.object({
-        create_at: z.date(),
-        update_at: z.date(),
-        labels: z.array(z.string()),
-        locked: z.boolean(),
-      })
+        schema: commonSchema,
     }),
     notes: defineCollection({
       type: 'page',
-      source: 'note/*.md'
+        source: 'note/*.md',
+        schema: commonSchema,
     }),
-    eassys: defineCollection({
+      essays: defineCollection({
       type: 'page',
-      source: 'eassy/*.md'
+          source: 'essays/*.md',
+          schema: commonSchema,
     })
   }
 })

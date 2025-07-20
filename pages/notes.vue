@@ -31,8 +31,7 @@ const toggleContent = (e: MouseEvent) => {
   <NuxtLayout>
     <div
         v-for="(note, index) in notes" :key="index"
-        class="border-[1px] border-gray-300 rounded px-4 py-2
-        hover:bg-gray-100 transition-all duration-150 dark:hover:bg-gray-700"
+        class="border-[1px] border-gray-300 rounded px-4 py-2 mb-2"
         @click="toggleContent"
     >
       <div class="flex justify-between items-center pointer-events-none">
@@ -41,7 +40,7 @@ const toggleContent = (e: MouseEvent) => {
       </div>
       <ContentRenderer
           :value="note"
-          class="content bg-gray-50 border-[1px] border-gray-300 rounded p-2 text-sm mt-4 dark:bg-gray-950"/>
+          class="content bg-gray-50 border-[1px] border-gray-300 rounded p-2 text-sm mt-4 dark:bg-gray-950 hidden"/>
     </div>
   </NuxtLayout>
 </template>
